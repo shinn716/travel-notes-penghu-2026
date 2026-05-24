@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 澎湖三天兩夜 · 花火 × 浮潛 × 玄武岩</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      background: linear-gradient(135deg, #0f4c75 0%, #1b6ca8 40%, #0e9aa7 100%);
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+      color: #1a1a2e;
+    }
+
+    .page-header {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 36px;
+    }
+    .page-header h1 {
+      font-size: 2.2rem;
+      letter-spacing: 4px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .page-header .subtitle {
+      margin-top: 8px;
+      font-size: 1rem;
+      opacity: 0.85;
+      letter-spacing: 2px;
+    }
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .day-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    }
+
+    .day-header {
+      padding: 18px 24px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .day-header.day1 { background: linear-gradient(90deg, #1565c0, #1e88e5); }
+    .day-header.day2 { background: linear-gradient(90deg, #00695c, #00acc1); }
+    .day-header.day3 { background: linear-gradient(90deg, #6a1b9a, #8e24aa); }
+
+    .day-num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      opacity: 0.25;
+      line-height: 1;
+      min-width: 60px;
+    }
+    .day-info h2 { font-size: 1.25rem; letter-spacing: 2px; }
+    .day-info .date-range { font-size: 0.88rem; opacity: 0.85; margin-top: 2px; }
+
+    .timeline {
+      padding: 20px 24px;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 0 16px;
+      margin-bottom: 0;
+    }
+
+    .item + .item .time-col::before {
+      content: '';
+      display: block;
+      width: 2px;
+      height: 16px;
+      background: #e0e0e0;
+      margin: 0 auto;
+    }
+
+    .time-col {
+      text-align: center;
+      padding-top: 2px;
+    }
+    .time-bubble {
+      display: inline-block;
+      background: #e3f2fd;
+      color: #1565c0;
+      border-radius: 12px;
+      padding: 3px 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .day2 .time-bubble { background: #e0f2f1; color: #00695c; }
+    .day3 .time-bubble { background: #f3e5f5; color: #6a1b9a; }
+
+    .content-col {
+      padding: 4px 0 20px;
+      border-left: 2px solid #e0e0e0;
+      padding-left: 18px;
+      position: relative;
+    }
+    .content-col::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #90caf9;
+    }
+    .day2 .content-col::before { background: #80cbc4; }
+    .day3 .content-col::before { background: #ce93d8; }
+
+    .item-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .item-title .icon { font-size: 1.1rem; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 1px 8px;
+      letter-spacing: 0.5px;
+    }
+    .tag-highlight { background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; }
+    .tag-food     { background: #fce4ec; color: #880e4f; border: 1px solid #f48fb1; }
+    .tag-scenery  { background: #e8f5e9; color: #1b5e20; border: 1px solid #a5d6a7; }
+    .tag-activity { background: #e3f2fd; color: #0d47a1; border: 1px solid #90caf9; }
+    .tag-transport{ background: #f3e5f5; color: #4a148c; border: 1px solid #ce93d8; }
+    .tag-festival { background: #fff9c4; color: #f57f17; border: 1px solid #fff176; }
+
+    .item-desc {
+      font-size: 0.88rem;
+      color: #555;
+      margin-top: 5px;
+      line-height: 1.65;
+    }
+    .item-tip {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: #888;
+      background: #fafafa;
+      border-left: 3px solid #e0e0e0;
+      padding: 4px 10px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 2px dashed #f0f0f0;
+      margin: 4px 0 20px 88px;
+    }
+
+    /* special: fireworks block */
+    .fireworks-block {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #fff;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-top: 8px;
+    }
+    .fireworks-block .fw-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fireworks-block .fw-desc {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+    .fireworks-block .fw-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .fw-meta-item {
+      background: rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+    }
+
+    /* tips section */
+    .tips-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    }
+    .tips-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #e3f2fd;
+      padding-bottom: 8px;
+    }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .tip-item {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.85rem;
+      color: #444;
+      line-height: 1.6;
+      border-left: 4px solid #1e88e5;
+    }
+    .tip-item strong { color: #1565c0; display: block; margin-bottom: 4px; }
+
+    /* hotel card */
+    .hotel-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    }
+    .hotel-card-header {
+      background: linear-gradient(90deg, #e65100, #ff8f00);
+      padding: 16px 24px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hotel-card-header .hotel-icon { font-size: 1.6rem; }
+    .hotel-card-header h3 { font-size: 1.05rem; letter-spacing: 1px; }
+    .hotel-card-header .hotel-sub { font-size: 0.8rem; opacity: 0.85; margin-top: 2px; }
+    .hotel-body {
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 560px) { .hotel-body { grid-template-columns: 1fr; } }
+    .hotel-info-block { display: flex; flex-direction: column; gap: 10px; }
+    .hotel-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.87rem;
+      color: #444;
+    }
+    .hotel-row .h-label {
+      font-weight: 700;
+      color: #e65100;
+      white-space: nowrap;
+      min-width: 64px;
+    }
+    .hotel-score {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e8f5e9;
+      border-radius: 10px;
+      padding: 2px 10px;
+      font-weight: 800;
+      color: #2e7d32;
+      font-size: 0.9rem;
+    }
+    .hotel-amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+    .amenity-tag {
+      background: #fff3e0;
+      color: #bf360c;
+      border: 1px solid #ffcc80;
+      border-radius: 10px;
+      padding: 2px 9px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .hotel-checkinout {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .checkin-box {
+      flex: 1;
+      min-width: 110px;
+      background: #e3f2fd;
+      border-radius: 12px;
+      padding: 10px 14px;
+      text-align: center;
+    }
+    .checkin-box .ci-label { font-size: 0.72rem; color: #1565c0; font-weight: 700; letter-spacing: 1px; }
+    .checkin-box .ci-time { font-size: 1.3rem; font-weight: 900; color: #1565c0; margin-top: 2px; }
+    .checkout-box {
+      flex: 1;
+      min-width: 110px;
+      background: #fce4ec;
+      border-radius: 12px;
+      padding: 10px 14px;
+      text-align: center;
+    }
+    .checkout-box .ci-label { font-size: 0.72rem; color: #880e4f; font-weight: 700; letter-spacing: 1px; }
+    .checkout-box .ci-time { font-size: 1.3rem; font-weight: 900; color: #880e4f; margin-top: 2px; }
+    .hotel-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      background: #e65100;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .hotel-link:hover { background: #bf360c; }
+
+    /* rental card */
+    .rental-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    }
+    .rental-header {
+      background: linear-gradient(90deg, #1b5e20, #388e3c);
+      padding: 16px 24px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .rental-header .r-icon { font-size: 1.6rem; }
+    .rental-header h3 { font-size: 1.05rem; letter-spacing: 1px; }
+    .rental-header .r-sub { font-size: 0.8rem; opacity: 0.85; margin-top: 2px; }
+    .rental-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; }
+    .rental-shop {
+      border: 1.5px solid #e8f5e9;
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: start;
+    }
+    .rental-shop.recommended { border-color: #a5d6a7; background: #f9fdf9; }
+    .rental-shop-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1b5e20;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .r-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #a5d6a7;
+      border-radius: 8px;
+      padding: 1px 7px;
+    }
+    .r-badge.top { background: #fff3e0; color: #e65100; border-color: #ffcc80; }
+    .rental-meta { font-size: 0.83rem; color: #555; margin-top: 6px; line-height: 1.8; }
+    .rental-meta span { margin-right: 12px; }
+    .rental-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+    .r-tag {
+      font-size: 0.72rem;
+      background: #f1f8e9;
+      color: #33691e;
+      border: 1px solid #c5e1a5;
+      border-radius: 8px;
+      padding: 2px 8px;
+    }
+    .rental-price {
+      text-align: right;
+      white-space: nowrap;
+    }
+    .price-num { font-size: 1.3rem; font-weight: 900; color: #388e3c; }
+    .price-unit { font-size: 0.72rem; color: #888; }
+    .rental-notice {
+      background: #fff8e1;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #5d4037;
+      line-height: 1.65;
+      border-left: 3px solid #ffd54f;
+    }
+
+    /* snorkel booking links */
+    .snorkel-links {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .snorkel-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 2px;
+    }
+    .snorkel-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-size: 0.82rem;
+      transition: opacity 0.15s;
+    }
+    .snorkel-btn:hover { opacity: 0.82; }
+    .snorkel-btn.kkday { background: #fff0e6; border: 1.5px solid #ffbb80; }
+    .snorkel-btn.klook { background: #e8f4ff; border: 1.5px solid #90c8f8; }
+    .snorkel-platform {
+      font-size: 0.68rem;
+      font-weight: 800;
+      border-radius: 6px;
+      padding: 1px 7px;
+      white-space: nowrap;
+    }
+    .snorkel-btn.kkday .snorkel-platform { background: #ff6000; color: #fff; }
+    .snorkel-btn.klook .snorkel-platform { background: #e31837; color: #fff; }
+    .snorkel-name { color: #333; font-weight: 500; }
+
+    /* attraction photo */
+    .item-photo {
+      margin-top: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .item-photo img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      background: #eee;
+    }
+    .item-photo-credit {
+      font-size: 0.62rem;
+      color: #bbb;
+      text-align: right;
+      margin-top: 3px;
+    }
+
+    /* map link */
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #1e88e5;
+      text-decoration: none;
+      border: 1px solid #90caf9;
+      border-radius: 8px;
+      padding: 2px 8px;
+      white-space: nowrap;
+      background: #f0f8ff;
+    }
+    .map-btn:hover { background: #e3f2fd; }
+
+    footer {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      margin-top: 32px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 480px) {
+      .page-header h1 { font-size: 1.5rem; }
+      .item { grid-template-columns: 60px 1fr; }
+      .time-bubble { font-size: 0.7rem; padding: 2px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>🌊 2026 澎湖三天兩夜</h1>
+  <p class="subtitle">花火 × 浮潛 × 玄武岩</p>
+  <div class="badges">
+    <span class="badge">📅 6/21 – 6/23</span>
+    <span class="badge">🛵 機車環島</span>
+    <span class="badge">🎇 花火節</span>
+    <span class="badge">🤿 浮潛</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ========== HOTEL ========== -->
+  <div class="hotel-card">
+    <div class="hotel-card-header">
+      <div class="hotel-icon">🏡</div>
+      <div>
+        <h3>陽光空氣水海景電梯民宿</h3>
+        <div class="hotel-sub">住宿 2 晚 · 6/21（日）– 6/23（二）</div>
+      </div>
+    </div>
+    <div class="hotel-body">
+      <div class="hotel-info-block">
+        <div class="hotel-row">
+          <span class="h-label">地址</span>
+          <span>澎湖縣馬公市伍德雞母鄔 33 號之 2　<a class="map-btn" href="https://maps.google.com/?q=澎湖縣馬公市伍德雞母鄔33號之2" target="_blank">📍 地圖</a></span>
+        </div>
+        <div class="hotel-row">
+          <span class="h-label">評分</span>
+          <span class="hotel-score">⭐ 10.0 <small style="font-weight:400;color:#555">/ 10 · 超棒</small></span>
+        </div>
+        <div class="hotel-row">
+          <span class="h-label">設施</span>
+          <div class="hotel-amenities">
+            <span class="amenity-tag">免費停車</span>
+            <span class="amenity-tag">免費 Wi-Fi</span>
+            <span class="amenity-tag">免費行李寄存</span>
+            <span class="amenity-tag">接駁服務</span>
+            <span class="amenity-tag">租車服務</span>
+          </div>
+        </div>
+        <div class="hotel-row">
+          <span class="h-label">備註</span>
+          <span>不含早餐 · 禁菸 · 安靜時間 22:00–06:00<br/>距機場約 7.5 公里</span>
+        </div>
+        <div>
+          <a class="hotel-link" href="https://www.trip.com/w/UjGiqpSPpU2" target="_blank">🔗 Trip.com 訂房頁面</a>
+        </div>
+      </div>
+      <div class="hotel-info-block">
+        <div class="hotel-checkinout">
+          <div class="checkin-box">
+            <div class="ci-label">CHECK IN</div>
+            <div class="ci-time">15:00</div>
+            <div style="font-size:0.72rem;color:#555;margin-top:4px">6 月 21 日（日）</div>
+          </div>
+          <div class="checkout-box">
+            <div class="ci-label">CHECK OUT</div>
+            <div class="ci-time">10:00</div>
+            <div style="font-size:0.72rem;color:#555;margin-top:4px">6 月 23 日（二）</div>
+          </div>
+        </div>
+        <div class="hotel-row" style="margin-top:4px;">
+          <span class="h-label">前台</span>
+          <span>週一至週日 09:00 – 18:00</span>
+        </div>
+        <div style="background:#fff8e1;border-radius:10px;padding:10px 12px;font-size:0.82rem;color:#6d4c00;line-height:1.6;border-left:3px solid #ffc107;">
+          ⚠️ Check-in 後 15:00 才能入房，抵澎後可先寄放行李再出去玩。退房日需於 10:00 前完成退房，可利用免費行李寄存服務後繼續遊覽。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== RENTAL ========== -->
+  <div class="rental-card">
+    <div class="rental-header">
+      <div class="r-icon">🛵</div>
+      <div>
+        <h3>機車租借推薦</h3>
+        <div class="r-sub">民宿附近 · 旺季務必提前 1–2 週預訂</div>
+      </div>
+    </div>
+    <div class="rental-body">
+
+      <div class="rental-shop recommended">
+        <div>
+          <div class="rental-shop-name">宏蓁租車行（澎湖通好）<span class="r-badge top">最推薦</span></div>
+          <div class="rental-meta">
+            <span>📍 馬公市中山路 33-1 號（港口碼頭店）</span>
+            <a class="map-btn" href="https://maps.google.com/?q=澎湖縣馬公市中山路33-1號+宏蓁租車" target="_blank">📍 地圖</a><br/>
+            <span>📞 06-927-2230</span>
+            <span>🕗 08:00–18:00</span>
+          </div>
+          <div class="rental-tags">
+            <span class="r-tag">KKday 6000+ 筆紀錄</span>
+            <span class="r-tag">機場／碼頭免費接送</span>
+            <span class="r-tag">3–5年新車</span>
+            <span class="r-tag">甲租乙還</span>
+            <span class="r-tag">提供頭盔</span>
+          </div>
+        </div>
+        <div class="rental-price">
+          <div class="price-num">$400</div>
+          <div class="price-unit">元／天</div>
+          <div style="font-size:0.7rem;color:#388e3c;margin-top:4px;">3天↑更優惠</div>
+        </div>
+      </div>
+
+      <div class="rental-shop">
+        <div>
+          <div class="rental-shop-name">日展租車（合發旅行社）<span class="r-badge">高評價</span></div>
+          <div class="rental-meta">
+            <span>📍 馬公市臨海路 11-1 號（距碼頭步行 3 分鐘）</span>
+            <a class="map-btn" href="https://maps.google.com/?q=澎湖縣馬公市臨海路11-1號+日展租車" target="_blank">📍 地圖</a><br/>
+            <span>📞 06-926-1558</span>
+          </div>
+          <div class="rental-tags">
+            <span class="r-tag">Google 1000+ 評價</span>
+            <span class="r-tag">市區飯店接送</span>
+            <span class="r-tag">Line 快速回覆</span>
+          </div>
+        </div>
+        <div class="rental-price">
+          <div class="price-num">$400</div>
+          <div class="price-unit">元／天</div>
+        </div>
+      </div>
+
+      <div class="rental-shop">
+        <div>
+          <div class="rental-shop-name">民宿直接詢問<span class="r-badge">最方便</span></div>
+          <div class="rental-meta">
+            陽光空氣水民宿本身提供租車服務，可在入住時直接詢問推薦合作店家或代訂服務，省去自行聯繫的麻煩。
+          </div>
+          <div class="rental-tags">
+            <span class="r-tag">民宿自有服務</span>
+            <span class="r-tag">在地推薦</span>
+          </div>
+        </div>
+        <div class="rental-price">
+          <div style="font-size:0.75rem;color:#888;text-align:right;">直接<br/>詢問</div>
+        </div>
+      </div>
+
+      <div class="rental-notice">
+        ⚠️ <strong>澎湖加油注意：</strong>除馬公市區加油站最晚到 23:00，其他鄉鎮最早 16:00 就關門，出發前務必加滿油。騎乘時速請勿超過 50km，全島共有 25 座測速照相機。
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== DAY 1 ========== -->
+  <div class="day-card">
+    <div class="day-header day1">
+      <div class="day-num">01</div>
+      <div class="day-info">
+        <h2>抵達馬公 × 跨海大橋 × 西嶼踩點</h2>
+        <div class="date-range">6 月 21 日（日）· 抵達 13:55</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">13:55</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">✈️</span> 抵達澎湖機場 <span class="tag tag-transport">交通</span> <a class="map-btn" href="https://maps.google.com/?q=馬公機場" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">降落馬公機場，出機場後前往租機車（機場附近有多家租車行，建議事先預訂）。</div>
+          <div class="item-tip">💡 租車費用約 300–400/天，需攜帶駕照</div>
+          <div class="item-photo">
+            <img src="images/airport.jpg" alt="馬公機場" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">14:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🏡</span> 陽光空氣水海景電梯民宿 · 寄放行李 <span class="tag tag-transport">安頓</span> <a class="map-btn" href="https://maps.google.com/?q=澎湖縣馬公市伍德雞母鄔33號之2" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">Check-in 時間為 15:00，可先寄放行李於民宿（提供免費行李寄存服務），確認機車油量後先出發遊玩，15:00 後再回來辦理入住。</div>
+          <div class="item-tip">💡 民宿提供接駁與租車服務，可詢問是否協助機場接送</div>
+        </div>
+      </div>
+
+      <hr class="section-divider"/>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">15:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🐠</span> 澎湖水族館 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=澎湖水族館,西嶼" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">台灣規模最大的公立水族館，展示澎湖周邊海域的珊瑚礁魚類、鯊魚、海龜等豐富生態，特色展區包含海底隧道與大型魚缸。是浮潛前先認識海洋生物的絕佳地方，園區寬敞、適合拍照。</div>
+          <div class="item-tip">💡 開放時間 09:00–17:00，建議停留 1–1.5 小時；全票 NT$100。從馬公騎車約 45 分鐘，過跨海大橋後即到西嶼合界</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">16:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">⚓</span> 外垵漁港 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">IG 熱點</span> <a class="map-btn" href="https://maps.google.com/?q=外垵漁港,澎湖西嶼" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">澎湖最美漁港，白色房舍依山而建，俯瞰整座港灣有「台版聖托里尼」美譽。從三仙塔制高點往下拍，白天與傍晚各有不同風情，是 IG 打卡必訪地點。</div>
+          <div class="item-photo">
+            <img src="images/waian-harbor.jpg" alt="外垵漁港夜景" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">17:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🏯</span> 西嶼西台古堡 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=西台古堡,澎湖縣西嶼鄉" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">澎湖最完整的清代砲台遺址，視野遼闊可眺望台灣海峽，下午光線角度最佳，從外垵漁港騎車約 5 分鐘。</div>
+          <div class="item-photo">
+            <img src="images/west-fort.jpg" alt="西嶼西台古堡砲台" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">17:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🌉</span> 小池角雙曲橋 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">IG 熱點</span> <a class="map-btn" href="https://maps.google.com/?q=小池角雙曲橋,澎湖西嶼" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">T 字型雙曲橋搭配湛藍海岸線，漲潮時涼亭如水上屋，退潮時現大片潮間帶岩盤，不論漲退潮都超夢幻。鄰近西台古堡，步行可達。</div>
+          <div class="item-tip">💡 傍晚光線最美，建議此時拍照</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">18:15</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🌳</span> 通樑古榕 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=通樑古榕,澎湖白沙" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">超過 300 年樹齡的老榕樹，氣根延伸盤繞橋下，形成天然綠色穹頂，是澎湖北環最具代表性的景觀之一。回程過跨海大橋後順路停訪，騎車穿越橋下非常涼快愜意。</div>
+          <div class="item-photo">
+            <img src="images/tongliang-banyan.jpg" alt="通樑古榕" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">19:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🦐</span> 晚餐 — 漁人小館 <span class="tag tag-food">美食</span> <a class="map-btn" href="https://maps.google.com/?q=漁人小館,澎湖" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">通樑古榕參觀完後前往漁人小館用晚餐，享用澎湖在地新鮮海產料理。</div>
+          <div class="item-tip">💡 用餐後返回馬公市區，可接續觀音亭散步</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">20:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🌅</span> 觀音亭夜景 × 散步 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=觀音亭親水遊憩區,澎湖" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">觀音亭海濱公園是馬公市區最美的夜景地點，夕陽西下後可沿海堤散步放鬆。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== DAY 2 ========== -->
+  <div class="day-card">
+    <div class="day-header day2">
+      <div class="day-num">02</div>
+      <div class="day-info">
+        <h2>北環祕境 × 浮潛 × 花火節</h2>
+        <div class="date-range">6 月 22 日（一）· 精華全日</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">07:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🍱</span> 早餐 <span class="tag tag-food">美食</span></div>
+          <div class="item-desc">推薦馬公市場旁的在地早餐店，享用鹹稀飯、油條配豆漿，或澎湖特色鹹粥。今天北環行程豐富，建議提早出發。</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">08:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🛤️</span> 後寮天堂路 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">IG 熱點</span> <a class="map-btn" href="https://maps.google.com/?q=後寮天堂路,澎湖白沙" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">一條蜿蜒入海的海堤步道，如「通往天堂的道路」般神秘壯觀，漲潮時海水包圍步道極為唯美，退潮時可見潮間帶生態。是北環路線的必拍 IG 秘境。</div>
+          <div class="item-tip">💡 需配合潮汐，漲潮景色最夢幻。出發前查詢 6/22 澎湖潮汐</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">09:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🗿</span> 奎壁山地質公園 — 摩西分海 <span class="tag tag-highlight">必去</span> <a class="map-btn" href="https://maps.google.com/?q=奎壁山地質公園,澎湖" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">退潮時大自然「分海」奇觀，一條礫石步道連接赤嶼小島，只有特定時間可走，需提前查詢潮汐時刻。</div>
+          <div class="item-tip">💡 建議查詢 6/22 低潮時間，提前 30 分鐘抵達</div>
+          <div class="item-photo">
+            <img src="images/kueibishan.jpg" alt="奎壁山地質公園" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">10:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🐋</span> 小門鯨魚洞 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=小門鯨魚洞,澎湖" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">玄武岩海蝕洞，形似鯨魚張嘴，是北環最具代表性的地質奇景，旁邊有地質館可免費參觀。</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">12:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🍜</span> 午餐 — 合界海鮮攤 <span class="tag tag-food">美食</span></div>
+          <div class="item-desc">回程途中在白沙鄉或鳥嶼附近的海鮮攤用餐，新鮮直送的炸物和海鮮麵線。</div>
+        </div>
+      </div>
+
+      <hr class="section-divider"/>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">13:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🤿</span> 山水沙灘浮潛 <span class="tag tag-activity">活動</span><span class="tag tag-highlight">必體驗</span> <a class="map-btn" href="https://maps.google.com/?q=山水沙灘,澎湖" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">山水沙灘是澎湖本島少數適合浮潛的海灣，水質清澈、珊瑚礁豐富，可看到熱帶魚群。全程由教練帶隊，不會游泳也能參加，附面罩、救生衣、膠鞋。</div>
+          <div class="item-photo">
+            <img src="images/shanshui-beach.jpg" alt="山水沙灘" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+          <div class="snorkel-links">
+            <div class="snorkel-label">🎟️ 推薦報名平台</div>
+            <a class="snorkel-btn kkday" href="https://www.kkday.com/zh-tw/product/102133" target="_blank">
+              <span class="snorkel-platform">KKday</span>
+              <span class="snorkel-name">浮潛海底郵筒 &amp; SUP｜山水沙灘</span>
+            </a>
+            <a class="snorkel-btn klook" href="https://www.klook.com/zh-TW/activity/53523-snorkeling-seawalker-penghu/" target="_blank">
+              <span class="snorkel-platform">Klook</span>
+              <span class="snorkel-name">海賊船浮潛 &amp; SUP &amp; 海底漫步｜山水濱海</span>
+            </a>
+            <a class="snorkel-btn klook" href="https://www.klook.com/zh-TW/activity/1089-snorkeling-penghu/" target="_blank">
+              <span class="snorkel-platform">Klook</span>
+              <span class="snorkel-name">海底郵筒浮潛體驗（珊瑚復育中心）</span>
+            </a>
+          </div>
+          <div class="item-tip">💡 6 月海況穩定、能見度高，是浮潛最佳時節。防曬乳請選珊瑚礁友善型；半身防曬衣可現場加租（NT$50）</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">16:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🛁</span> 回飯店盥洗休息 <span class="tag tag-transport">準備</span></div>
+          <div class="item-desc">沖洗海水、換衣休息，為花火節晚上做準備。建議穿輕便透氣的夏日衣物。</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">17:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🍣</span> 晚餐 — 馬公市區 <span class="tag tag-food">美食</span></div>
+          <div class="item-desc">推薦：元正海鮮或中正路一帶的熱炒店，七點前用完餐，預留時間步行前往花火節會場。</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">19:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🚢</span> 前往南海遊客中心 · 準備登船 <span class="tag tag-transport">交通</span> <a class="map-btn" href="https://maps.google.com/?q=南海遊客中心,澎湖馬公" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">騎機車前往南海遊客中心碼頭，停好機車後辦理報到手續。提早 30 分鐘抵達，確認憑證與上船資訊。</div>
+          <div class="item-tip">💡 KKday 憑證請事先截圖存好，出示電子票券即可登船</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">20:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🎇</span> 海上花火船 · 澎湖國際花火節 <span class="tag tag-festival">花火節</span><span class="tag tag-highlight">重頭戲</span></div>
+          <div class="fireworks-block">
+            <div class="fw-title">🚢 KKday 海上花火船 — 保證有位</div>
+            <div class="fw-desc">
+              從南海遊客中心出發，搭乘私人花火船在海上欣賞澎湖花火節！比岸上觀賞視角更震撼，可 360° 環繞觀看煙火倒映在海面的壯麗景象。煙火結合雷射光秀，主場開始時間 21:00，全程約 1 小時。
+            </div>
+            <div class="fw-meta">
+              <span class="fw-meta-item">📍 南海遊客中心碼頭</span>
+              <span class="fw-meta-item">⏰ 煙火 21:00 開始</span>
+              <span class="fw-meta-item">⏱️ 全程約 1 小時</span>
+              <span class="fw-meta-item">🎟️ KKday #104992</span>
+            </div>
+          </div>
+          <div class="item-tip">⚠️ 天候不佳時主辦方會全額退費；建議暈船者提前 30 分鐘服用暈船藥。取消異動請關注 KKday 通知</div>
+          <div class="item-photo">
+            <img src="images/fireworks.jpg" alt="澎湖國際海上花火節" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">22:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🍧</span> 宵夜 — 仙人掌冰 <span class="tag tag-food">美食</span></div>
+          <div class="item-desc">花火船返回碼頭後，騎車到中正路或老街附近吃澎湖特產仙人掌冰或海燕窩，為美好的一天畫下句點。</div>
+          <div class="item-tip">💡 民宿安靜時間 22:00 起，宵夜控制時間，騎車回程注意安全</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== DAY 3 ========== -->
+  <div class="day-card">
+    <div class="day-header day3">
+      <div class="day-num">03</div>
+      <div class="day-info">
+        <h2>南環踩點 × 伴手禮 × 返程</h2>
+        <div class="date-range">6 月 23 日（二）· 離境 12:55</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">07:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🌅</span> 早起看日出 × 早餐 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=林投公園,澎湖" target="_blank">📍 林投公園</a></div>
+          <div class="item-desc">澎湖日出約 05:30，可前往林投公園或澎湖灣（外婆的澎湖灣）欣賞晨光，再返回市區享用早餐。</div>
+          <div class="item-photo">
+            <img src="images/lintou-park.jpg" alt="林投公園" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">08:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🐍</span> 蛇頭山 × 風櫃洞 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=蛇頭山,澎湖馬公" target="_blank">📍 蛇頭山</a> <a class="map-btn" href="https://maps.google.com/?q=風櫃洞,澎湖" target="_blank">📍 風櫃洞</a></div>
+          <div class="item-desc">
+            <strong>蛇頭山：</strong>俯瞰馬公港全景的制高點，有清代砲台遺跡，5 分鐘即可登頂。<br/>
+            <strong>風櫃洞：</strong>玄武岩岩洞受浪拍打會發出轟鳴聲，漲潮時效果最佳。
+          </div>
+          <div class="item-photo">
+            <img src="images/fenggui-cave.jpg" alt="風櫃洞玄武岩" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">09:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🔑</span> 退房 — 陽光空氣水海景電梯民宿 <span class="tag tag-transport">退房</span></div>
+          <div class="item-desc">返回民宿辦理退房（需於 10:00 前完成）。行李可繼續寄存，取回後再前往機場，輕鬆採購最後的伴手禮。</div>
+          <div class="item-tip">💡 退房後利用免費行李寄存，空手出門買東西更方便</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">10:00</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🏘️</span> 篤行十村 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">IG 熱點</span> <a class="map-btn" href="https://maps.google.com/?q=篤行十村,澎湖馬公" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">由日治時期眷村改建的文創聚落，融合新舊文化，有張雨生故事館、潘安邦紀念館、五弄咖啡館等特色空間，牆面彩繪、老建築與創意裝置隨處可拍，是馬公市區最具 IG 感的角落。</div>
+          <div class="item-tip">💡 就在中央老街附近，步行可達，參觀約 20–30 分鐘</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">10:30</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🛍️</span> 順承門 × 天后宮 × 中央老街採購 <span class="tag tag-activity">購物</span> <a class="map-btn" href="https://maps.google.com/?q=順承門,澎湖馬公" target="_blank">📍 順承門</a> <a class="map-btn" href="https://maps.google.com/?q=澎湖天后宮" target="_blank">📍 天后宮</a> <a class="map-btn" href="https://maps.google.com/?q=澎湖中央老街" target="_blank">📍 老街</a></div>
+          <div class="item-desc">三點集中在同一區塊，步行可串聯。先繞 <strong>順承門</strong>（清代古城門，5 分鐘打卡）→ <strong>天后宮</strong>（全台最古老媽祖廟，四眼井就在旁）→ <strong>中央老街</strong>採買伴手禮。推薦：仙人掌果醬、澎湖花生糖、丁香魚乾、海帶、珊瑚工藝品。</div>
+          <div class="item-tip">💡 真空包裝的海鮮乾貨可帶上飛機，重量控制在 7kg 手提行李限制內</div>
+          <div class="item-photo">
+            <img src="images/shuncheng-gate.jpg" alt="順承門澎湖古城牆" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+          <div class="item-photo">
+            <img src="images/tianhou-temple.jpg" alt="澎湖天后宮" loading="lazy" />
+            <div class="item-photo-credit">© Wikimedia Commons</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">11:20</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🛵</span> 還車 → 前往機場 <span class="tag tag-transport">交通</span></div>
+          <div class="item-desc">還機車後搭計程車或請租車行接送至機場，機場小巧，約 10 分鐘車程，建議 11:20 前還車。</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">11:55</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">✈️</span> 機場報到 <span class="tag tag-transport">交通</span> <a class="map-btn" href="https://maps.google.com/?q=馬公機場" target="_blank">📍 地圖</a></div>
+          <div class="item-desc">完成報到、安檢，候機準備離島。回味這三天的花火、海浪與仙人掌冰！</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">12:55</span></div>
+        <div class="content-col">
+          <div class="item-title"><span class="icon">🛫</span> 離開澎湖 · 再見海風！</div>
+          <div class="item-desc">帶著滿滿的回憶與伴手禮，期待下次再訪！</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== TIPS ========== -->
+  <div class="tips-card">
+    <h3>🧳 旅行小提醒</h3>
+    <div class="tips-grid">
+      <div class="tip-item">
+        <strong>🛵 機車注意</strong>
+        澎湖夏日紫外線強烈，騎車務必穿長袖、戴帽子和墨鏡，備好防曬乳。
+      </div>
+      <div class="tip-item">
+        <strong>🌊 浮潛安全</strong>
+        不熟悉水性者建議選有教練帶隊的行程；注意浪況，不要獨自浮潛。
+      </div>
+      <div class="tip-item">
+        <strong>🎆 花火節搶位</strong>
+        花火節人潮眾多，建議提前 1 小時到場佔位，周邊機車停車位有限。
+      </div>
+      <div class="tip-item">
+        <strong>🌡️ 氣候</strong>
+        6 月均溫 28–32°C，潮濕多風。備輕薄防風外套（花火節海邊風大）。
+      </div>
+      <div class="tip-item">
+        <strong>🏄 潮汐</strong>
+        前往奎壁山「摩西分海」需配合退潮，出發前查詢當天澎湖潮汐表。
+      </div>
+      <div class="tip-item">
+        <strong>💳 現金備用</strong>
+        澎湖部分小攤、漁市不接受刷卡，建議攜帶現金 NT$3,000–5,000。
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  2026 澎湖三天兩夜 · 花火 × 浮潛 × 玄武岩 · 🌊
+</footer>
+
+</body>
+</html>
