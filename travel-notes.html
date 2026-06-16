@@ -460,7 +460,6 @@
     }
     .snorkel-btn:hover { opacity: 0.82; }
     .snorkel-btn.kkday { background: #fff0e6; border: 1.5px solid #ffbb80; }
-    .snorkel-btn.klook { background: #e8f4ff; border: 1.5px solid #90c8f8; }
     .snorkel-platform {
       font-size: 0.68rem;
       font-weight: 800;
@@ -469,7 +468,6 @@
       white-space: nowrap;
     }
     .snorkel-btn.kkday .snorkel-platform { background: #ff6000; color: #fff; }
-    .snorkel-btn.klook .snorkel-platform { background: #e31837; color: #fff; }
     .snorkel-name { color: #333; font-weight: 500; }
 
     /* attraction photo */
@@ -518,6 +516,27 @@
       letter-spacing: 1px;
     }
 
+    /* ===== 行前通知 ===== */
+    .pretip-card { background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.18); }
+    .pretip-header { background:linear-gradient(90deg,#1a237e,#283593); padding:16px 24px; color:#fff; display:flex; align-items:center; gap:12px; }
+    .pretip-header .pt-icon { font-size:1.6rem; }
+    .pretip-header h3 { font-size:1.05rem; letter-spacing:1px; margin:0; }
+    .pretip-header .pt-sub { font-size:0.8rem; opacity:0.85; margin-top:2px; }
+    .pretip-body { padding:20px 24px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .pretip-sub-card { background:#f9f9f9; border-radius:14px; padding:16px; }
+    .pretip-sub-card h4 { font-size:0.9rem; font-weight:800; color:#1a1a2e; margin:0 0 10px; padding-bottom:6px; border-bottom:2px solid #e3f2fd; display:flex; align-items:center; gap:6px; }
+    .pretip-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+    .pretip-list li { font-size:0.85rem; color:#444; line-height:1.55; }
+    .pretip-list li label { display:flex; align-items:flex-start; gap:8px; cursor:pointer; width:100%; }
+    .pretip-list input[type="checkbox"].pt-check { flex-shrink:0; margin-top:2px; accent-color:#1565c0; width:15px; height:15px; cursor:pointer; }
+    .pretip-list li label:has(input:checked) span { text-decoration:line-through; opacity:0.4; }
+    .pretip-list.warn li { color:#5d4037; display:flex; gap:8px; align-items:flex-start; }
+    .pretip-list.warn .pt-check { color:#e65100; flex-shrink:0; margin-top:1px; }
+    .pretip-contact-item { border:1.5px solid #e8f5e9; border-radius:12px; padding:10px 12px; font-size:0.83rem; color:#333; line-height:1.7; margin-bottom:8px; }
+    .pretip-contact-item strong { display:block; font-size:0.88rem; color:#1b5e20; margin-bottom:3px; }
+    .pretip-phone { font-weight:700; color:#1565c0; }
+    @media (max-width:600px) { .pretip-body { grid-template-columns:1fr; } }
+
     @media (max-width: 480px) {
       .page-header h1 { font-size: 1.5rem; }
       .item { grid-template-columns: 60px 1fr; }
@@ -539,6 +558,81 @@
 </header>
 
 <div class="container">
+
+  <!-- ========== 行前通知 ========== -->
+  <div class="pretip-card">
+    <div class="pretip-header">
+      <div class="pt-icon">📋</div>
+      <div>
+        <h3>行前通知</h3>
+        <div class="pt-sub">出發前請逐項確認 · 6 月 21 日（日）出發</div>
+      </div>
+    </div>
+    <div class="pretip-body">
+
+      <div class="pretip-sub-card">
+        <h4>✅ 預訂確認</h4>
+        <ul class="pretip-list">
+          <li><label><input type="checkbox" class="pt-check"><span>住宿 — 陽光空氣水海景電梯民宿 <a class="hotel-link" href="https://www.trip.com/w/UjGiqpSPpU2" target="_blank">🔗 Trip.com</a></span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>SUP + 浮潛 — <a class="snorkel-btn kkday" href="https://www.kkday.com/zh-tw/product/102133" target="_blank"><span class="snorkel-platform">KKday</span><span class="snorkel-name">確認訂單</span></a></span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>花火節船票 — KKday（需另行購票）</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>澎湖水族館門票</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>租機車</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>個人旅遊保險</span></label></li>
+        </ul>
+      </div>
+
+      <div class="pretip-sub-card">
+        <h4>🎒 攜帶物品</h4>
+        <ul class="pretip-list">
+          <li><label><input type="checkbox" class="pt-check"><span>駕照（租車必備）</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>泳衣褲</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>三日換洗衣物（內衣褲 × 3、襪子 × 3）</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>薄外套 / 防風外套（花火節船上風大）</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>防曬衣（長袖，騎車 + 水上活動遮陽）</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>拖鞋</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>帽子</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>太陽眼鏡</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>珊瑚礁友善防曬乳（非化學性，浮潛必備）</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>毛巾、牙刷</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>個人藥品</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>暈船藥（花火節船建議攜帶）</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>現金 NT$3,000–5,000</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>雨衣 / 雨傘</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>水壺</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>行動電源</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>手機充電器</span></label></li>
+          <li><label><input type="checkbox" class="pt-check"><span>手機防水袋</span></label></li>
+        </ul>
+      </div>
+
+      <div class="pretip-sub-card">
+        <h4>📞 重要聯絡</h4>
+        <div class="pretip-contact-item">
+          <strong>🏡 陽光空氣水海景電梯民宿</strong>
+          澎湖縣馬公市伍德雞母鄔 33 號之 2
+          <a class="map-btn" href="https://maps.google.com/?q=澎湖縣馬公市伍德雞母鄔33號之2" target="_blank">📍 地圖</a>
+        </div>
+      </div>
+
+      <div class="pretip-sub-card">
+        <h4>⚠️ 出發前注意事項</h4>
+        <ul class="pretip-list warn">
+          <li><span class="pt-check">⚠️</span><span>離開馬公前務必加滿油；外島站最晚 16:00 關門</span></li>
+          <li><span class="pt-check">⚠️</span><span>全島速限 50 km/h，共 25 座測速照相機</span></li>
+          <li><span class="pt-check">⚠️</span><span>SUP 浮潛最低 4 人成行；不足人數前一日通知取消</span></li>
+          <li><span class="pt-check">⚠️</span><span>浮潛僅限珊瑚礁友善防曬，化學性防曬禁止</span></li>
+          <li><span class="pt-check">⚠️</span><span>民宿安靜時間 22:00–06:00</span></li>
+          <li><span class="pt-check">🛵</span><span>騎車務必穿長袖、戴帽子和墨鏡，備好防曬乳</span></li>
+          <li><span class="pt-check">🌊</span><span>浮潛注意浪況，不熟悉水性者選有教練帶隊的行程</span></li>
+          <li><span class="pt-check">🎆</span><span>花火節提前 1 小時到場佔位，周邊機車停車位有限</span></li>
+          <li><span class="pt-check">🌡️</span><span>6 月均溫 28–32°C，潮濕多風，備輕薄防風外套</span></li>
+          <li><span class="pt-check">💳</span><span>部分小攤、漁市不接受刷卡，建議攜帶現金</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
 
   <!-- ========== HOTEL ========== -->
   <div class="hotel-card">
@@ -602,82 +696,6 @@
   </div>
 
   <!-- ========== RENTAL ========== -->
-  <div class="rental-card">
-    <div class="rental-header">
-      <div class="r-icon">🛵</div>
-      <div>
-        <h3>機車租借推薦</h3>
-        <div class="r-sub">民宿附近 · 旺季務必提前 1–2 週預訂</div>
-      </div>
-    </div>
-    <div class="rental-body">
-
-      <div class="rental-shop recommended">
-        <div>
-          <div class="rental-shop-name">宏蓁租車行（澎湖通好）<span class="r-badge top">最推薦</span></div>
-          <div class="rental-meta">
-            <span>📍 馬公市中山路 33-1 號（港口碼頭店）</span>
-            <a class="map-btn" href="https://maps.google.com/?q=澎湖縣馬公市中山路33-1號+宏蓁租車" target="_blank">📍 地圖</a><br/>
-            <span>📞 06-927-2230</span>
-            <span>🕗 08:00–18:00</span>
-          </div>
-          <div class="rental-tags">
-            <span class="r-tag">KKday 6000+ 筆紀錄</span>
-            <span class="r-tag">機場／碼頭免費接送</span>
-            <span class="r-tag">3–5年新車</span>
-            <span class="r-tag">甲租乙還</span>
-            <span class="r-tag">提供頭盔</span>
-          </div>
-        </div>
-        <div class="rental-price">
-          <div class="price-num">$400</div>
-          <div class="price-unit">元／天</div>
-          <div style="font-size:0.7rem;color:#388e3c;margin-top:4px;">3天↑更優惠</div>
-        </div>
-      </div>
-
-      <div class="rental-shop">
-        <div>
-          <div class="rental-shop-name">日展租車（合發旅行社）<span class="r-badge">高評價</span></div>
-          <div class="rental-meta">
-            <span>📍 馬公市臨海路 11-1 號（距碼頭步行 3 分鐘）</span>
-            <a class="map-btn" href="https://maps.google.com/?q=澎湖縣馬公市臨海路11-1號+日展租車" target="_blank">📍 地圖</a><br/>
-            <span>📞 06-926-1558</span>
-          </div>
-          <div class="rental-tags">
-            <span class="r-tag">Google 1000+ 評價</span>
-            <span class="r-tag">市區飯店接送</span>
-            <span class="r-tag">Line 快速回覆</span>
-          </div>
-        </div>
-        <div class="rental-price">
-          <div class="price-num">$400</div>
-          <div class="price-unit">元／天</div>
-        </div>
-      </div>
-
-      <div class="rental-shop">
-        <div>
-          <div class="rental-shop-name">民宿直接詢問<span class="r-badge">最方便</span></div>
-          <div class="rental-meta">
-            陽光空氣水民宿本身提供租車服務，可在入住時直接詢問推薦合作店家或代訂服務，省去自行聯繫的麻煩。
-          </div>
-          <div class="rental-tags">
-            <span class="r-tag">民宿自有服務</span>
-            <span class="r-tag">在地推薦</span>
-          </div>
-        </div>
-        <div class="rental-price">
-          <div style="font-size:0.75rem;color:#888;text-align:right;">直接<br/>詢問</div>
-        </div>
-      </div>
-
-      <div class="rental-notice">
-        ⚠️ <strong>澎湖加油注意：</strong>除馬公市區加油站最晚到 23:00，其他鄉鎮最早 16:00 就關門，出發前務必加滿油。騎乘時速請勿超過 50km，全島共有 25 座測速照相機。
-      </div>
-
-    </div>
-  </div>
 
   <!-- ========== DAY 1 ========== -->
   <div class="day-card">
@@ -697,10 +715,6 @@
           <div class="item-title"><span class="icon">✈️</span> 抵達澎湖機場 <span class="tag tag-transport">交通</span> <a class="map-btn" href="https://maps.google.com/?q=馬公機場" target="_blank">📍 地圖</a></div>
           <div class="item-desc">降落馬公機場，出機場後前往租機車（機場附近有多家租車行，建議事先預訂）。</div>
           <div class="item-tip">💡 租車費用約 300–400/天，需攜帶駕照</div>
-          <div class="item-photo">
-            <img src="images/airport.jpg" alt="馬公機場" loading="lazy" />
-            <div class="item-photo-credit">© Wikimedia Commons</div>
-          </div>
         </div>
       </div>
 
@@ -729,10 +743,6 @@
         <div class="content-col">
           <div class="item-title"><span class="icon">⚓</span> 外垵漁港 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">IG 熱點</span> <a class="map-btn" href="https://maps.google.com/?q=外垵漁港,澎湖西嶼" target="_blank">📍 地圖</a></div>
           <div class="item-desc">澎湖最美漁港，白色房舍依山而建，俯瞰整座港灣有「台版聖托里尼」美譽。從三仙塔制高點往下拍，白天與傍晚各有不同風情，是 IG 打卡必訪地點。</div>
-          <div class="item-photo">
-            <img src="images/waian-harbor.jpg" alt="外垵漁港夜景" loading="lazy" />
-            <div class="item-photo-credit">© Wikimedia Commons</div>
-          </div>
         </div>
       </div>
 
@@ -741,10 +751,6 @@
         <div class="content-col">
           <div class="item-title"><span class="icon">🏯</span> 西嶼西台古堡 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=西台古堡,澎湖縣西嶼鄉" target="_blank">📍 地圖</a></div>
           <div class="item-desc">澎湖最完整的清代砲台遺址，視野遼闊可眺望台灣海峽，下午光線角度最佳，從外垵漁港騎車約 5 分鐘。</div>
-          <div class="item-photo">
-            <img src="images/west-fort.jpg" alt="西嶼西台古堡砲台" loading="lazy" />
-            <div class="item-photo-credit">© Wikimedia Commons</div>
-          </div>
         </div>
       </div>
 
@@ -762,10 +768,6 @@
         <div class="content-col">
           <div class="item-title"><span class="icon">🌳</span> 通樑古榕 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=通樑古榕,澎湖白沙" target="_blank">📍 地圖</a></div>
           <div class="item-desc">超過 300 年樹齡的老榕樹，氣根延伸盤繞橋下，形成天然綠色穹頂，是澎湖北環最具代表性的景觀之一。回程過跨海大橋後順路停訪，騎車穿越橋下非常涼快愜意。</div>
-          <div class="item-photo">
-            <img src="images/tongliang-banyan.jpg" alt="通樑古榕" loading="lazy" />
-            <div class="item-photo-credit">© Wikimedia Commons</div>
-          </div>
         </div>
       </div>
 
@@ -814,14 +816,10 @@
         <div class="content-col">
           <div class="item-title"><span class="icon">🏄</span> 立槳 SUP × 浮潛海底郵筒 一日遊 <span class="tag tag-activity">活動</span><span class="tag tag-highlight">必體驗</span> <a class="map-btn" href="https://maps.google.com/?q=陽光阿有浮潛,澎湖山水" target="_blank">📍 地圖</a></div>
           <div class="item-desc">全天水上活動（09:00–17:00），水上活動時數約 4.5 小時，含教練指導與免費拍照服務。
-            <br/><br/>
+            <br/>
             <strong>🏄 SUP 立槳：</strong>教練岸上基礎教學後下水，體驗在澎湖湛藍海面上站立划行，視野絕佳。<br/>
             <strong>🤿 浮潛 × 海底郵筒：</strong>珊瑚礁豐富、熱帶魚群穿梭，可游至離岸 150 公尺處的海底郵筒投入明信片（全台第一座水下郵筒）。<br/>
             <strong>📸 免費拍照：</strong>教練全程陪同並拍攝水中精彩照片，活動結束後提供。
-          </div>
-          <div class="item-photo">
-            <img src="images/shanshui-beach.jpg" alt="山水沙灘" loading="lazy" />
-            <div class="item-photo-credit">© Wikimedia Commons</div>
           </div>
           <div class="snorkel-links">
             <div class="snorkel-label">🎟️ 立即預訂</div>
@@ -876,10 +874,6 @@
             </div>
           </div>
           <div class="item-tip">⚠️ 天候不佳時主辦方會全額退費；建議暈船者提前 30 分鐘服用暈船藥。取消異動請關注 KKday 通知</div>
-          <div class="item-photo">
-            <img src="images/fireworks.jpg" alt="澎湖國際海上花火節" loading="lazy" />
-            <div class="item-photo-credit">© Wikimedia Commons</div>
-          </div>
         </div>
       </div>
 
@@ -931,14 +925,6 @@
           <div class="item-title"><span class="icon">🛍️</span> 順承門 × 天后宮 × 中央老街採購 <span class="tag tag-activity">購物</span> <a class="map-btn" href="https://maps.google.com/?q=順承門,澎湖馬公" target="_blank">📍 順承門</a> <a class="map-btn" href="https://maps.google.com/?q=澎湖天后宮" target="_blank">📍 天后宮</a> <a class="map-btn" href="https://maps.google.com/?q=澎湖中央老街" target="_blank">📍 老街</a></div>
           <div class="item-desc">三點集中在同一區塊，步行可串聯。先繞 <strong>順承門</strong>（清代古城門，5 分鐘打卡）→ <strong>天后宮</strong>（全台最古老媽祖廟，四眼井就在旁）→ <strong>中央老街</strong>採買伴手禮。推薦：仙人掌果醬、澎湖花生糖、丁香魚乾、海帶、珊瑚工藝品。</div>
           <div class="item-tip">💡 真空包裝的海鮮乾貨可帶上飛機，重量控制在 7kg 手提行李限制內</div>
-          <div class="item-photo">
-            <img src="images/shuncheng-gate.jpg" alt="順承門澎湖古城牆" loading="lazy" />
-            <div class="item-photo-credit">© Wikimedia Commons</div>
-          </div>
-          <div class="item-photo">
-            <img src="images/tianhou-temple.jpg" alt="澎湖天后宮" loading="lazy" />
-            <div class="item-photo-credit">© Wikimedia Commons</div>
-          </div>
         </div>
       </div>
 
@@ -970,35 +956,6 @@
   </div>
 
   <!-- ========== TIPS ========== -->
-  <div class="tips-card">
-    <h3>🧳 旅行小提醒</h3>
-    <div class="tips-grid">
-      <div class="tip-item">
-        <strong>🛵 機車注意</strong>
-        澎湖夏日紫外線強烈，騎車務必穿長袖、戴帽子和墨鏡，備好防曬乳。
-      </div>
-      <div class="tip-item">
-        <strong>🌊 浮潛安全</strong>
-        不熟悉水性者建議選有教練帶隊的行程；注意浪況，不要獨自浮潛。
-      </div>
-      <div class="tip-item">
-        <strong>🎆 花火節搶位</strong>
-        花火節人潮眾多，建議提前 1 小時到場佔位，周邊機車停車位有限。
-      </div>
-      <div class="tip-item">
-        <strong>🌡️ 氣候</strong>
-        6 月均溫 28–32°C，潮濕多風。備輕薄防風外套（花火節海邊風大）。
-      </div>
-      <div class="tip-item">
-        <strong>🏄 潮汐</strong>
-        前往奎壁山「摩西分海」需配合退潮，出發前查詢當天澎湖潮汐表。
-      </div>
-      <div class="tip-item">
-        <strong>💳 現金備用</strong>
-        澎湖部分小攤、漁市不接受刷卡，建議攜帶現金 NT$3,000–5,000。
-      </div>
-    </div>
-  </div>
 
 </div>
 
@@ -1006,5 +963,12 @@
   2026 澎湖三天兩夜 · 花火 × 浮潛 × 玄武岩 · 🌊
 </footer>
 
+<script>
+  const cbs = document.querySelectorAll('.pretip-list input[type="checkbox"]');
+  cbs.forEach((cb, i) => {
+    cb.checked = localStorage.getItem('pretip-' + i) === '1';
+    cb.addEventListener('change', () => localStorage.setItem('pretip-' + i, cb.checked ? '1' : '0'));
+  });
+</script>
 </body>
 </html>
