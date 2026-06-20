@@ -223,38 +223,6 @@
       font-size: 0.78rem;
     }
 
-    /* tips section */
-    .tips-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    }
-    .tips-card h3 {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: #1a1a2e;
-      margin-bottom: 14px;
-      letter-spacing: 1px;
-      border-bottom: 2px solid #e3f2fd;
-      padding-bottom: 8px;
-    }
-    .tips-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
-    }
-    .tip-item {
-      background: #f9f9f9;
-      border-radius: 12px;
-      padding: 12px 14px;
-      font-size: 0.85rem;
-      color: #444;
-      line-height: 1.6;
-      border-left: 4px solid #1e88e5;
-    }
-    .tip-item strong { color: #1565c0; display: block; margin-bottom: 4px; }
-
     /* hotel card */
     .hotel-card {
       background: #fff;
@@ -279,7 +247,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
-    @media (max-width: 560px) { .hotel-body { grid-template-columns: 1fr; } }
     .hotel-info-block { display: flex; flex-direction: column; gap: 10px; }
     .hotel-row {
       display: flex;
@@ -361,80 +328,6 @@
     }
     .hotel-link:hover { background: #bf360c; }
 
-    /* rental card */
-    .rental-card {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    }
-    .rental-header {
-      background: linear-gradient(90deg, #1b5e20, #388e3c);
-      padding: 16px 24px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .rental-header .r-icon { font-size: 1.6rem; }
-    .rental-header h3 { font-size: 1.05rem; letter-spacing: 1px; }
-    .rental-header .r-sub { font-size: 0.8rem; opacity: 0.85; margin-top: 2px; }
-    .rental-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; }
-    .rental-shop {
-      border: 1.5px solid #e8f5e9;
-      border-radius: 14px;
-      padding: 14px 16px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-      align-items: start;
-    }
-    .rental-shop.recommended { border-color: #a5d6a7; background: #f9fdf9; }
-    .rental-shop-name {
-      font-size: 1rem;
-      font-weight: 800;
-      color: #1b5e20;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .r-badge {
-      font-size: 0.68rem;
-      font-weight: 700;
-      background: #e8f5e9;
-      color: #2e7d32;
-      border: 1px solid #a5d6a7;
-      border-radius: 8px;
-      padding: 1px 7px;
-    }
-    .r-badge.top { background: #fff3e0; color: #e65100; border-color: #ffcc80; }
-    .rental-meta { font-size: 0.83rem; color: #555; margin-top: 6px; line-height: 1.8; }
-    .rental-meta span { margin-right: 12px; }
-    .rental-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
-    .r-tag {
-      font-size: 0.72rem;
-      background: #f1f8e9;
-      color: #33691e;
-      border: 1px solid #c5e1a5;
-      border-radius: 8px;
-      padding: 2px 8px;
-    }
-    .rental-price {
-      text-align: right;
-      white-space: nowrap;
-    }
-    .price-num { font-size: 1.3rem; font-weight: 900; color: #388e3c; }
-    .price-unit { font-size: 0.72rem; color: #888; }
-    .rental-notice {
-      background: #fff8e1;
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 0.82rem;
-      color: #5d4037;
-      line-height: 1.65;
-      border-left: 3px solid #ffd54f;
-    }
-
     /* snorkel booking links */
     .snorkel-links {
       margin-top: 10px;
@@ -470,27 +363,6 @@
     .snorkel-btn.kkday .snorkel-platform { background: #ff6000; color: #fff; }
     .snorkel-name { color: #333; font-weight: 500; }
 
-    /* attraction photo */
-    .item-photo {
-      margin-top: 10px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .item-photo img {
-      width: 100%;
-      max-height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      display: block;
-      background: #eee;
-    }
-    .item-photo-credit {
-      font-size: 0.62rem;
-      color: #bbb;
-      text-align: right;
-      margin-top: 3px;
-    }
-
     /* map link */
     .map-btn {
       display: inline-flex;
@@ -508,6 +380,60 @@
     }
     .map-btn:hover { background: #e3f2fd; }
 
+    /* day navigation */
+    .day-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      margin: -24px -16px 24px;
+      background: rgba(11, 58, 96, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .day-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .day-nav-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .day-nav-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .day-nav-dot.d0 { background: #7986cb; }
+    .day-nav-dot.d1 { background: #42a5f5; }
+    .day-nav-dot.d2 { background: #26c6da; }
+    .day-nav-dot.d3 { background: #ba68c8; }
+
+    /* reset button */
+    .reset-btn {
+      margin-left: auto;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.65);
+      border-radius: 8px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .reset-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
     footer {
       text-align: center;
       color: rgba(255,255,255,0.6);
@@ -522,7 +448,7 @@
     .pretip-header .pt-icon { font-size:1.6rem; }
     .pretip-header h3 { font-size:1.05rem; letter-spacing:1px; margin:0; }
     .pretip-header .pt-sub { font-size:0.8rem; opacity:0.85; margin-top:2px; }
-    .pretip-body { padding:20px 24px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .pretip-body { padding:20px 24px; display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:start; }
     .pretip-sub-card { background:#f9f9f9; border-radius:14px; padding:16px; }
     .pretip-sub-card h4 { font-size:0.9rem; font-weight:800; color:#1a1a2e; margin:0 0 10px; padding-bottom:6px; border-bottom:2px solid #e3f2fd; display:flex; align-items:center; gap:6px; }
     .pretip-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
@@ -535,16 +461,27 @@
     .pretip-contact-item { border:1.5px solid #e8f5e9; border-radius:12px; padding:10px 12px; font-size:0.83rem; color:#333; line-height:1.7; margin-bottom:8px; }
     .pretip-contact-item strong { display:block; font-size:0.88rem; color:#1b5e20; margin-bottom:3px; }
     .pretip-phone { font-weight:700; color:#1565c0; }
-    @media (max-width:600px) { .pretip-body { grid-template-columns:1fr; } }
-
+    @media (max-width: 600px) {
+      .pretip-body { grid-template-columns: 1fr; }
+      .hotel-body { grid-template-columns: 1fr; }
+    }
     @media (max-width: 480px) {
       .page-header h1 { font-size: 1.5rem; }
       .item { grid-template-columns: 60px 1fr; }
       .time-bubble { font-size: 0.7rem; padding: 2px 6px; }
+      .section-divider { margin-left: 76px; }
+      .day-nav-btn { padding: 5px 10px; font-size: 0.72rem; }
     }
   </style>
 </head>
 <body>
+
+<nav class="day-nav">
+  <a href="#pretip" class="day-nav-btn"><span class="day-nav-dot d0"></span>行前通知</a>
+  <a href="#day1" class="day-nav-btn"><span class="day-nav-dot d1"></span>Day 1 · 北環</a>
+  <a href="#day2" class="day-nav-btn"><span class="day-nav-dot d2"></span>Day 2 · SUP × 花火</a>
+  <a href="#day3" class="day-nav-btn"><span class="day-nav-dot d3"></span>Day 3 · 南環</a>
+</nav>
 
 <header class="page-header">
   <h1>🌊 2026 澎湖三天兩夜</h1>
@@ -560,13 +497,14 @@
 <div class="container">
 
   <!-- ========== 行前通知 ========== -->
-  <div class="pretip-card">
+  <div class="pretip-card" id="pretip">
     <div class="pretip-header">
       <div class="pt-icon">📋</div>
       <div>
         <h3>行前通知</h3>
         <div class="pt-sub">出發前請逐項確認 · 6 月 21 日（日）出發</div>
       </div>
+      <button class="reset-btn" id="reset-checks" title="重置所有勾選">↺ 重置清單</button>
     </div>
     <div class="pretip-body">
 
@@ -700,7 +638,7 @@
   <!-- ========== RENTAL ========== -->
 
   <!-- ========== DAY 1 ========== -->
-  <div class="day-card">
+  <div class="day-card" id="day1">
     <div class="day-header day1">
       <div class="day-num">01</div>
       <div class="day-info">
@@ -734,7 +672,7 @@
       <div class="item">
         <div class="time-col"><span class="time-bubble">15:20</span></div>
         <div class="content-col">
-          <div class="item-title"><span class="icon">🎈</span> 中屯風車 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">IG 熱點</span> <a class="map-btn" href="https://maps.google.com/?q=中屯風車,澎湖白沙" target="_blank">📍 地圖</a></div>
+          <div class="item-title"><span class="icon">🎈</span> 中屯風車 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=中屯風車,澎湖白沙" target="_blank">📍 地圖</a> <span class="tag tag-highlight">IG 熱點</span></div>
           <div class="item-desc">8 座白色大風車一字排開矗立海堤旁，是北環最具代表性的地標之一。可走到旁邊的小公園拍照，從特定角度一次能將 8 支風車收進畫面。</div>
           <div class="item-tip">💡 停留約 15 分鐘即可，鄰近跨海大橋</div>
         </div>
@@ -769,7 +707,7 @@
       <div class="item">
         <div class="time-col"><span class="time-bubble">17:15</span></div>
         <div class="content-col">
-          <div class="item-title"><span class="icon">🏯</span> 二崁古厝 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">3 級古蹟</span> <a class="map-btn" href="https://maps.google.com/?q=二崁古厝,澎湖西嶼" target="_blank">📍 地圖</a></div>
+          <div class="item-title"><span class="icon">🏯</span> 二崁古厝 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=二崁古厝,澎湖西嶼" target="_blank">📍 地圖</a> <span class="tag tag-highlight">3 級古蹟</span></div>
           <div class="item-desc">澎湖縣定第三級古蹟聚落，以在地咕咾石（珊瑚礁岩）建造而成的傳統閣宅，保留完整的閩南式建築群。村內必喝杏仁茶、必吃阿婆手作南瓜糕。</div>
           <div class="item-tip">💡 時間較緊，快速散步老聚落，停留約 20 分鐘</div>
         </div>
@@ -778,7 +716,7 @@
       <div class="item">
         <div class="time-col"><span class="time-bubble">17:35</span></div>
         <div class="content-col">
-          <div class="item-title"><span class="icon">🥙</span> 晚餐 — 外垵刈包 <span class="tag tag-food">美食</span><span class="tag tag-highlight">必吃</span> <a class="map-btn" href="https://maps.google.com/?q=外垵刈包,澎湖西嶼" target="_blank">📍 地圖</a></div>
+          <div class="item-title"><span class="icon">🥙</span> 晚餐 — 外垵刈包 <span class="tag tag-food">美食</span> <a class="map-btn" href="https://maps.google.com/?q=外垵刈包,澎湖西嶼" target="_blank">📍 地圖</a> <span class="tag tag-highlight">必吃</span></div>
           <div class="item-desc">傳說中的「澎湖夜衝」名店，過去只有晚上才吃得到，現在到下午 6 點前都有營業即可品嚐。必吃刈包之外，爆漿黑糖饅頭與熱狗蛋也是人氣品項。</div>
           <div class="item-tip">⚠️ 營業至 18:00，把握收店前時間快速用餐</div>
         </div>
@@ -787,7 +725,7 @@
       <div class="item">
         <div class="time-col"><span class="time-bubble">18:00</span></div>
         <div class="content-col">
-          <div class="item-title"><span class="icon">🪨</span> 大果葉柱狀玄武岩 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">必拍</span> <a class="map-btn" href="https://maps.google.com/?q=大果葉柱狀玄武岩,澎湖西嶼" target="_blank">📍 地圖</a></div>
+          <div class="item-title"><span class="icon">🪨</span> 大果葉柱狀玄武岩 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=大果葉柱狀玄武岩,澎湖西嶼" target="_blank">📍 地圖</a> <span class="tag tag-highlight">必拍</span></div>
           <div class="item-desc">澎湖最具代表性的玄武岩地質景觀之一，柱狀岩壁層層排列，壯觀且具特色。</div>
           <div class="item-tip">⚠️ 切勿攀爬，已有遊客因攀爬遭警方開罰；現場無廁所，請提前如廁</div>
         </div>
@@ -796,7 +734,7 @@
       <div class="item">
         <div class="time-col"><span class="time-bubble">18:25</span></div>
         <div class="content-col">
-          <div class="item-title"><span class="icon">🌉</span> 小池角雙曲橋 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">IG 熱點</span> <a class="map-btn" href="https://maps.google.com/?q=小池角雙曲橋,澎湖西嶼" target="_blank">📍 地圖</a></div>
+          <div class="item-title"><span class="icon">🌉</span> 小池角雙曲橋 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=小池角雙曲橋,澎湖西嶼" target="_blank">📍 地圖</a> <span class="tag tag-highlight">IG 熱點</span></div>
           <div class="item-desc">T 字型雙曲橋搭配湛藍海岸線，漲潮時涼亭如水上屋，退潮時現大片潮間帶岩盤，不論漲退潮都超夢幻，網美網帥必拍景點。</div>
           <div class="item-tip">💡 傍晚光線最美，建議此時拍照</div>
         </div>
@@ -805,7 +743,7 @@
       <div class="item">
         <div class="time-col"><span class="time-bubble">18:50</span></div>
         <div class="content-col">
-          <div class="item-title"><span class="icon">🌅</span> 漁翁島燈塔 · 看夕陽 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">壓軸</span> <a class="map-btn" href="https://maps.google.com/?q=漁翁島燈塔,澎湖西嶼" target="_blank">📍 地圖</a></div>
+          <div class="item-title"><span class="icon">🌅</span> 漁翁島燈塔 · 看夕陽 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=漁翁島燈塔,澎湖西嶼" target="_blank">📍 地圖</a> <span class="tag tag-highlight">壓軸</span></div>
           <div class="item-desc">全台最西端的燈塔，日治時期即興建，視野遼闊，是北環欣賞夕陽的最佳地點之一。旁邊有沙灘可坐著欣賞海上落日。</div>
           <div class="item-tip">💡 6 月日落約 18:50–19:10，建議提前抵達卡位</div>
         </div>
@@ -824,32 +762,24 @@
         <div class="time-col"><span class="time-bubble">20:15</span></div>
         <div class="content-col">
           <div class="item-title"><span class="icon">🍢</span> 宵夜小點 <span class="tag tag-food">美食</span></div>
-          <div class="item-desc">抵達市區後在中正路周邊找間小吃店墊墊胃，海鮮粥、燒烤或關東煮都是輕鬆的選擇，為晚間散步留點空間。</div>
+          <div class="item-desc">返回南環民宿附近後，在周邊找間小吃店墊墊胃，海鮮粥、燒烤或關東煮都是輕鬆的選擇，為晚間散步留點空間。</div>
         </div>
       </div>
 
       <div class="item">
-        <div class="time-col"><span class="time-bubble">20:45</span></div>
+        <div class="time-col"><span class="time-bubble">21:00</span></div>
         <div class="content-col">
-          <div class="item-title"><span class="icon">🌉</span> 觀音亭親水遊憩區 × 西瀛虹橋夜間光雕 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">夜景必訪</span> <a class="map-btn" href="https://maps.google.com/?q=觀音亭親水遊憩區,澎湖" target="_blank">📍 地圖</a></div>
-          <div class="item-desc">西瀛虹橋（情人橋）入夜後會點上色彩變化的燈光，搭配海堤夕陽餘韻與海風，是馬公市區最熱門的夜景拍照點，可順遊觀音亭海濱公園。</div>
-          <div class="item-tip">💡 燈光秀約整點變換，建議多停留拍照</div>
+          <div class="item-title"><span class="icon">🌌</span> 山水高地 · 夜間觀星 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=山水高地,澎湖湖西" target="_blank">📍 地圖</a> <span class="tag tag-highlight">觀星秘境</span></div>
+          <div class="item-desc">山水沙灘後方的高地，光害極少、視野開闊，是澎湖南環最佳觀星點之一。夜風徐徐、繁星滿天，為第一天畫下美好句點。</div>
+          <div class="item-tip">💡 建議帶手電筒，路面不平；不要開車燈或手機閃光燈以保留暗空視野</div>
         </div>
       </div>
 
       <div class="item">
-        <div class="time-col"><span class="time-bubble">21:45</span></div>
-        <div class="content-col">
-          <div class="item-title"><span class="icon">🌃</span> 海堤夜間散步 · 吹海風 <span class="tag tag-scenery">景點</span></div>
-          <div class="item-desc">沿觀音亭海堤悠閒散步，吹著海風、看星空，為精彩的第一天慢慢收尾。</div>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="time-col"><span class="time-bubble">22:30</span></div>
+        <div class="time-col"><span class="time-bubble">22:00</span></div>
         <div class="content-col">
           <div class="item-title"><span class="icon">🏡</span> 返回民宿 · 結束第一天 <span class="tag tag-transport">交通</span></div>
-          <div class="item-desc">結束充實的北環踩點與夜景行程，返回民宿休息，為明天的 SUP × 浮潛 × 花火節備好體力。</div>
+          <div class="item-desc">結束充實的北環踩點行程，步行返回民宿休息，為明天的 SUP × 浮潛 × 花火節備好體力。</div>
           <div class="item-tip">⚠️ 民宿安靜時間 22:00 起，進門及整理行李請放輕聲音</div>
         </div>
       </div>
@@ -858,7 +788,7 @@
   </div>
 
   <!-- ========== DAY 2 ========== -->
-  <div class="day-card">
+  <div class="day-card" id="day2">
     <div class="day-header day2">
       <div class="day-num">02</div>
       <div class="day-info">
@@ -867,7 +797,7 @@
       </div>
     </div>
 
-    <div class="timeline">
+    <div class="timeline day2">
 
       <div class="item">
         <div class="time-col"><span class="time-bubble">07:30</span></div>
@@ -880,7 +810,7 @@
       <div class="item">
         <div class="time-col"><span class="time-bubble">09:00</span></div>
         <div class="content-col">
-          <div class="item-title"><span class="icon">🏄</span> 立槳 SUP × 浮潛海底郵筒 一日遊 <span class="tag tag-activity">活動</span><span class="tag tag-highlight">必體驗</span> <a class="map-btn" href="https://maps.google.com/?q=陽光阿有浮潛,澎湖山水" target="_blank">📍 地圖</a></div>
+          <div class="item-title"><span class="icon">🏄</span> 立槳 SUP × 浮潛海底郵筒 一日遊 <span class="tag tag-activity">活動</span> <a class="map-btn" href="https://maps.google.com/?q=陽光阿有浮潛,澎湖山水" target="_blank">📍 地圖</a> <span class="tag tag-highlight">必體驗</span></div>
           <div class="item-desc">全天水上活動（09:00–17:00），水上活動時數約 4.5 小時，含教練指導與免費拍照服務。
             <br/>
             <strong>🏄 SUP 立槳：</strong>教練岸上基礎教學後下水，體驗在澎湖湛藍海面上站立划行，視野絕佳。<br/>
@@ -901,8 +831,17 @@
       <div class="item">
         <div class="time-col"><span class="time-bubble">16:00</span></div>
         <div class="content-col">
+          <div class="item-title"><span class="icon">🌉</span> 觀音亭親水遊憩區 × 西瀛虹橋夜間光雕 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=觀音亭親水遊憩區,澎湖" target="_blank">📍 地圖</a> <span class="tag tag-highlight">夜景必訪</span></div>
+          <div class="item-desc">西瀛虹橋（情人橋）入夜後會點上色彩變化的燈光，搭配海堤夕陽餘韻與海風，是馬公市區最熱門的夜景拍照點，可順遊觀音亭海濱公園。</div>
+          <div class="item-tip">💡 燈光秀約整點變換，建議多停留拍照</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time-col"><span class="time-bubble">17:00</span></div>
+        <div class="content-col">
           <div class="item-title"><span class="icon">🛁</span> 一日遊結束 · 回飯店盥洗休息 <span class="tag tag-transport">準備</span></div>
-          <div class="item-desc">17:00 活動結束，騎車返回民宿沖洗海水、換衣休息，為花火節晚上做準備。建議穿輕便透氣的夏日衣物。</div>
+          <div class="item-desc">活動結束，騎車返回民宿沖洗海水、換衣休息，為花火節晚上做準備。建議穿輕便透氣的夏日衣物。</div>
         </div>
       </div>
 
@@ -956,7 +895,7 @@
   </div>
 
   <!-- ========== DAY 3 ========== -->
-  <div class="day-card">
+  <div class="day-card" id="day3">
     <div class="day-header day3">
       <div class="day-num">03</div>
       <div class="day-info">
@@ -965,7 +904,7 @@
       </div>
     </div>
 
-    <div class="timeline">
+    <div class="timeline day3">
 
       <div class="item">
         <div class="time-col"><span class="time-bubble">06:00</span></div>
@@ -978,7 +917,7 @@
       <div class="item">
         <div class="time-col"><span class="time-bubble">06:30</span></div>
         <div class="content-col">
-          <div class="item-title"><span class="icon">🐾</span> 奎壁山摩西分海 · 踏浪 <span class="tag tag-activity">活動</span><span class="tag tag-highlight">必體驗</span> <a class="map-btn" href="https://maps.google.com/?q=奎壁山摩西分海,澎湖湖西" target="_blank">📍 地圖</a> <a class="map-btn" href="https://www.idlefish.tw/blogs/charts.html" target="_blank">🌊 潮汐查詢</a></div>
+          <div class="item-title"><span class="icon">🐾</span> 奎壁山摩西分海 · 踏浪 <span class="tag tag-activity">活動</span> <a class="map-btn" href="https://maps.google.com/?q=奎壁山摩西分海,澎湖湖西" target="_blank">📍 地圖</a> <a class="map-btn" href="https://www.idlefish.tw/blogs/charts.html" target="_blank">🌊 潮汐查詢</a> <span class="tag tag-highlight">必體驗</span></div>
           <div class="item-desc">退潮時會浮現一條 S 型礫石步道，可步行通往對面的赤嶼，猶如「摩西分海」的奇景，是南環必體驗的自然奇觀。</div>
           <div class="item-tip">⚠️ 步道開放時間 06:00–09:30，且退潮時間每日不同，請出發前至 <a href="https://www.idlefish.tw/blogs/charts.html" target="_blank">潮汐表</a> 確認 6/23 當天實際退潮時段並調整行程順序；切勿登上對面無人島（赤嶼），違者罰款 NT$20,000/人。踏浪結束後請預留時間返回民宿沖洗整理</div>
         </div>
@@ -998,7 +937,7 @@
       <div class="item">
         <div class="time-col"><span class="time-bubble">10:00</span></div>
         <div class="content-col">
-          <div class="item-title"><span class="icon">🏘️</span> 篤行十村 <span class="tag tag-scenery">景點</span><span class="tag tag-highlight">IG 熱點</span> <a class="map-btn" href="https://maps.google.com/?q=篤行十村,澎湖馬公" target="_blank">📍 地圖</a></div>
+          <div class="item-title"><span class="icon">🏘️</span> 篤行十村 <span class="tag tag-scenery">景點</span> <a class="map-btn" href="https://maps.google.com/?q=篤行十村,澎湖馬公" target="_blank">📍 地圖</a> <span class="tag tag-highlight">IG 熱點</span></div>
           <div class="item-desc">由日治時期眷村改建的文創聚落，融合新舊文化，有張雨生故事館、潘安邦紀念館、五弄咖啡館等特色空間，牆面彩繪、老建築與創意裝置隨處可拍，是馬公市區最具 IG 感的角落。</div>
           <div class="item-tip">💡 就在中央老街附近，步行可達，參觀約 15–20 分鐘</div>
         </div>
@@ -1059,6 +998,12 @@
   cbs.forEach((cb, i) => {
     cb.checked = localStorage.getItem('pretip-' + i) === '1';
     cb.addEventListener('change', () => localStorage.setItem('pretip-' + i, cb.checked ? '1' : '0'));
+  });
+  document.getElementById('reset-checks').addEventListener('click', () => {
+    cbs.forEach((cb, i) => {
+      cb.checked = false;
+      localStorage.removeItem('pretip-' + i);
+    });
   });
 </script>
 </body>
